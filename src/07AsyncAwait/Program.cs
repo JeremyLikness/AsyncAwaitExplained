@@ -6,7 +6,7 @@ namespace _07AsyncAwait
 {
     class Program
     {
-        private const string PrideAndPrejudice = "http://www.gutenberg.org/cache/epub/1342/pg1342.txt";
+        private const string WebSite = "http://ivision.com/our-services/technology-services/application-development/";
 
         private static void Main()
         {
@@ -18,10 +18,10 @@ namespace _07AsyncAwait
         {
             try
             {
-                Console.WriteLine("Going to read a book.");
+                Console.WriteLine("Going to read a website.");
                 var client = new HttpClient();
-                var book = await client.GetStringAsync(PrideAndPrejudice);
-                Console.WriteLine("Read {0} bytes.", book.Length);
+                var site = await client.GetStringAsync(WebSite);
+                Console.WriteLine("Read {0} bytes.", site.Length);
             }
             catch (Exception ex)
             {

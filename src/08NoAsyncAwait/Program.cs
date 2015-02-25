@@ -5,13 +5,13 @@ namespace _08NoAsyncAwait
 {
     class Program
     {
-        private const string PrideAndPrejudice = "http://www.gutenberg.org/cache/epub/1342/pg1342.txt";
+        private const string WebSite = "http://ivision.com/our-services/technology-services/application-development/";
 
         private static void Main()
         {
-            Console.WriteLine("Going to read a book.");
+            Console.WriteLine("Going to read a site.");
             var client = new HttpClient();
-            var task = client.GetStringAsync(PrideAndPrejudice);
+            var task = client.GetStringAsync(WebSite);
             task.Wait();
             if (task.IsCanceled)
             {
@@ -19,8 +19,8 @@ namespace _08NoAsyncAwait
             }
             else
             {
-                var book = task.Result;
-                Console.WriteLine("Read {0} bytes.", book.Length);
+                var site = task.Result;
+                Console.WriteLine("Read {0} bytes.", site.Length);
             }
             Console.ReadLine();
         }        
