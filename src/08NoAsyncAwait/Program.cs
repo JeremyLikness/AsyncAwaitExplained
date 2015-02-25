@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading;
 
 namespace _08NoAsyncAwait
 {
@@ -9,7 +10,7 @@ namespace _08NoAsyncAwait
 
         private static void Main()
         {
-            Console.WriteLine("Going to read a site.");
+            Console.WriteLine("Going to read a site from thread {0}.", Thread.CurrentThread.ManagedThreadId);
             var client = new HttpClient();
             var task = client.GetStringAsync(WebSite);
             task.Wait();
@@ -20,7 +21,7 @@ namespace _08NoAsyncAwait
             else
             {
                 var site = task.Result;
-                Console.WriteLine("Read {0} bytes.", site.Length);
+                Console.WriteLine("Read {0} bytes from thread {1}.", site.Length, Thread.CurrentThread.ManagedThreadId);
             }
             Console.ReadLine();
         }        

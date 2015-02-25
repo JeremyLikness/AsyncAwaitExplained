@@ -10,13 +10,13 @@ namespace _06Asynchronous
 
         static void Main()
         {
-            Console.WriteLine("Going to read a site.");
+            Console.WriteLine("Going to read a site from thread {0}.", Thread.CurrentThread.ManagedThreadId);
             var client = new HttpClient();
             var task = client.GetStringAsync(WebSite);
             
             while (!task.IsCanceled && !task.IsCompleted)
             {
-                Console.WriteLine("Doing stuff in the meantime...");
+                Console.WriteLine("Doing stuff in the meantime on thread {0}...", Thread.CurrentThread.ManagedThreadId);
                 Thread.Sleep(100);
             }
 
@@ -27,7 +27,7 @@ namespace _06Asynchronous
             else
             {
                 var site = task.Result;
-                Console.WriteLine("Downloaded {0} bytes.", site.Length);
+                Console.WriteLine("Downloaded {0} bytes from thread {1}.", site.Length, Thread.CurrentThread.ManagedThreadId);
             }
 
             Console.ReadLine();
