@@ -27,6 +27,7 @@ namespace _07AsyncAwait
             {
                 Console.WriteLine("Going to read a website from thread {0}.", Thread.CurrentThread.ManagedThreadId);
                 var client = new HttpClient();
+
                 var site = await client.GetStringAsync(WebSite);
                 Console.WriteLine("Read {0} bytes from thread {1}.", site.Length, Thread.CurrentThread.ManagedThreadId);
             }

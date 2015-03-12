@@ -10,21 +10,21 @@ namespace _01Threads
             
         static void Main()
         {
-            Console.WriteLine("Main program thread.");
+            Console.WriteLine("Main program thread {0}.", Thread.CurrentThread.ManagedThreadId);
             var thread = new Thread(Sequence);
             thread.Start();
-            Console.WriteLine("Going to sleep.");
+            Console.WriteLine("Going to sleep on thread {0}.", Thread.CurrentThread.ManagedThreadId);
             Thread.Sleep(2000);
             Console.WriteLine("Waiting for thread to stop.");
             thread.Join();
-            Console.WriteLine("Done.");
+            Console.WriteLine("Done on thread {0}.", Thread.CurrentThread.ManagedThreadId);
             Console.ReadLine();
         }
 
         private static void Sequence(Object state)
         {
             var fibonacci = new List<int>();
-            Console.WriteLine("Computing sequences...");
+            Console.WriteLine("Computing sequences on thread {0}...", Thread.CurrentThread.ManagedThreadId);
             var x1 = 1;
             var x2 = 1;
             fibonacci.Add(x1);
