@@ -1,8 +1,6 @@
 Async Await 
 ===========
 
-# Async/await examples
-
 This repository and deck are part of the presentation, "Async/Await Explained." 
 
 ## 01Threads
